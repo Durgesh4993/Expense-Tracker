@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div>
+        <h1>Expense Tracker</h1>
+        <p class="sub">Track income & expenses with charts</p>
+      </div>
+
+      <div class="top-actions">
+        <button id="clearAllBtn" class="btn btn-ghost" title="Clear all data">Clear</button>
+      </div>
+    </header>
+
+    <main class="grid">
+      <!-- LEFT -->
+      <section class="panel">
+        <h2 class="panel-title">Add Transaction</h2>
+
+        <form id="transactionForm" class="form">
+          <div class="row">
+            <label>
+              Title
+              <input id="title" type="text" placeholder="e.g., Salary / Groceries" required />
+            </label>
+          </div>
+
+          <div class="row two">
+            <label>
+              Amount
+              <input id="amount" type="number" placeholder="e.g., 5000" required />
+            </label>
+
+            <label>
+              Type
+              <select id="type" required>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="row two">
+            <label>
+              Category
+              <select id="category" required>
+                <option value="Salary">Salary</option>
+                <option value="Freelance">Freelance</option>
+                <option value="Food">Food</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Travel">Travel</option>
+                <option value="Bills">Bills</option>
+                <option value="Education">Education</option>
+                <option value="Health">Health</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+
+            <label>
+              Date
+              <input id="date" type="date" required />
+            </label>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Add Transaction</button>
+        </form>
+
+        <div class="summary">
+          <div class="card">
+            <p class="muted">Balance</p>
+            <h3 id="balanceText">₹0</h3>
+          </div>
+
+          <div class="card positive">
+            <p class="muted">Income</p>
+            <h3 id="incomeText">₹0</h3>
+          </div>
+
+          <div class="card negative">
+            <p class="muted">Expense</p>
+            <h3 id="expenseText">₹0</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT -->
+      <section class="panel">
+        <div class="panel-head">
+          <h2 class="panel-title">Transactions</h2>
+
+          <div class="search">
+            <input id="searchInput" type="text" placeholder="Search title/category..." />
+          </div>
+        </div>
+
+        <div class="list" id="transactionsList"></div>
+      </section>
+
+      <!-- CHARTS -->
+      <section class="panel charts">
+        <h2 class="panel-title">Charts</h2>
+
+        <div class="chart-grid">
+          <div class="chart-card">
+            <div class="chart-title">Income vs Expense</div>
+            <canvas id="barChart" width="680" height="300"></canvas>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-title">Expense by Category</div>
+            <canvas id="pieChart" width="680" height="300"></canvas>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      Built with HTML • CSS • JS — LocalStorage Enabled
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
